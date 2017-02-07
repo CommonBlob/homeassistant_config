@@ -191,7 +191,7 @@ camera:
 #    valid_ssl: false
 
 switch: !include broadlink.yaml
-group: !include groups.yaml
+group: !include_dir_merge_named groups
 zone: !include zones.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml

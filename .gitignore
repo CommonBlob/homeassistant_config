@@ -4,7 +4,8 @@
 *.csr
 *.crt
 *.key
-ipbans.yaml
+gitupdate.sh
+ip_bans.yaml
 www
 OZW_Log.txt
 home-assistant.log
