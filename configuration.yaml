@@ -1,0 +1,199 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret location_lat
+  longitude: !secret location_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret location_elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret location_tz
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret baseurl
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  ssl_certificate: !secret sslcert
+  ssl_key: !secret sslkey
+
+#microsoft_face:
+#  api_key: !secret microsoft_face_apikey
+
+#image_processing:
+# - platform: microsoft_face_identify
+#   group: family
+#   source:
+#    - entity_id: camera.lobby_camera
+
+# Checks for available updates
+updater:
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/avconv
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+notify:
+  - platform: html5
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+#mqtt:
+#  broker: !secret mqtt_url
+#  port: 
+#  username: !secret mqtt_username
+#  password: !secret mqtt_password
+
+# Weather Prediction
+sensor:
+  - platform: fastdotcom
+  - platform: steam_online
+    api_key: !secret steam_apikey
+    accounts: 
+      - !secret steam_account1
+      - !secret steam_account2
+  - platform: google_travel_time
+    name: Time to Work
+    api_key: !secret google_matrixapi
+    origin: device_tracker.cvh7n15c29000362
+    destination: zone.work
+    options:
+      mode: transit
+  - platform: google_travel_time
+    name: Time to Home
+    api_key: !secret google_matrixapi
+    origin: device_tracker.cvh7n15c29000362
+    destination: zone.home
+    options:
+      mode: transit
+  - platform: darksky
+    api_key: !secret darksky_api
+    update_interval: '00:10'
+    units: uk2
+    monitored_conditions:
+      - summary
+      - icon
+      - nearest_storm_distance
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - temperature
+      - apparent_temperature
+      - wind_speed
+      - wind_bearing
+      - humidity
+      - visibility
+      - hourly_summary
+      - daily_summary
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+      - type: since_last_boot
+  - platform: pi_hole
+  - platform: synologydsm
+    host: !secret ip_synology
+    port: 5000
+    username: !secret synology_username
+    password: !secret synology_password
+    monitored_conditions:
+      - cpu_total_load
+      - memory_real_usage
+      - disk_smart_status
+      - volume_status
+# Text to speech
+tts:
+  - platform: google
+
+emulated_hue:
+  exposed_domains:
+    - light
+    - switch
+
+media_player:
+  - platform: lg_netcast
+    host: !secret ip_lg
+    access_token: !secret lg_accesstoken
+
+ifttt:
+  key: !secret ifttt_key
+
+device_tracker:
+  - platform: ddwrt
+    host: !secret ip_router
+    username: !secret router_username
+    password: !secret router_password
+  - platform: gpslogger
+
+device_sun_light_trigger:
+  device_group: group.family_card
+  light_group: group.arrivehome
+
+netatmo:
+  api_key: !secret netatmo_apikey
+  secret_key: !secret netatmo_secret
+  username: !secret netatmo_username
+  password: !secret netatmo_password
+
+light:
+  platform: limitlessled
+  bridges:
+    - host: !secret ip_limitless
+      groups:
+      - number: 1
+        name: Lounge
+        type: rgbw
+      - number: 2
+        name: Study
+        type: rgbw
+      - number: 3
+        name: Outside
+        type: rgbw
+
+camera:
+  - platform: foscam
+    ip: !secret ip_lobby
+    username: !secret foscam_username
+    password: !secret foscam_password
+    name: Lobby
+  - platform: ffmpeg
+    input: !secret backgarden_camera_rtsp
+    name: Backgarden
+  - platform: ffmpeg
+    input: driveway_camera_rtsp
+    name: Driveway
+#  - platform: synology
+#    url: !secret synology_url
+#    username: !secret synology_username
+#    password: !secret synology_password
+#    verify_ssl: false
+#    valid_ssl: false
+
+switch: !include broadlink.yaml
+group: !include groups.yaml
+zone: !include zones.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+automation: !include automations.yaml
+alexa: !include alexa.yaml

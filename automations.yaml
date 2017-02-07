@@ -1,0 +1,44 @@
+- alias: Welcome Home Mike
+  trigger:
+    platform: state
+    entity_id: group.mike_device
+    from: 'not_home'
+    to: 'home'
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '20:00:00'
+  action:
+    service: tts.google_say
+    entity_id: media_player.lounge_media_player
+    data_template:
+      message: >
+       {{ [ "Welcome home Mike. I missed you so much. Bye", "Welcome back Mike. Have you had a good day?", "Is it that time already, welcome home Mike the creator!", "Ahh, i see Mike is back. Great to see you old chap.", "I came across a wooden stick. Oh, and hello Mike." ] | random }}
+- alias: Turn Outside Light Off
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: light.outside
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.outside
+- alias: Known person arrives
+  trigger:
+    platform: event
+    event_type: identify_face
+    event_data:
+      entity_id: image_processing.microsoftface_lobby
+      name: 'Mike Clark'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.study

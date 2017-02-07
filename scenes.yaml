@@ -1,0 +1,13 @@
+  - name: Going to bed
+    entities:
+      light.lounge: off
+      light.study: off
+      light.outside: off
+      switch.lounge_xbox: off
+      switch.lounge_lamp: off
+  - name: Hugo going to sleep
+    entities:
+      light.lounge:
+        state: on
+        brightness: 2
+

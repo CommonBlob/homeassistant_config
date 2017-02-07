@@ -1,0 +1,20 @@
+  - name: Work
+    latitude: !secret worklocation_lat
+    longitude: !secret worklocation_long
+    radius: 50
+    icon: mdi:domain
+  - name: School
+    latitude: !secret schoollocation_lat
+    longitude: !secret schoollocation_long
+    radius: 70
+    icon: mdi:school
+  - name: Nannys
+    latitude: !secret nannylocation_lat
+    longitude: !secret nannylocation_long
+    radius: 40
+    icon: mdi:account
+  - name: Grandmas
+    latitude: !secret grandmalocation_lat
+    longitude: !secret grandmalocation_long
+    radius: 40
+    icon: mdi:account

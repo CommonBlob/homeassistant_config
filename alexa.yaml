@@ -1,0 +1,62 @@
+  intents:
+    WhereAreWeIntent:
+      speech:
+        type: plaintext
+        text: >
+          {%- if is_state('device_tracker.cvh7n15c29000362', 'home') and
+                 is_state('device_tracker.amy_phone', 'home') -%}
+            You are both home, you blind person!
+          {%- else -%}
+            Mike is at {{ states("device_tracker.cvh7n15c29000362") | replace("_", " ") }}
+            and Amy is at {{ states("device_tracker.amy_phone") | replace("_", " ") }}
+          {% endif %}
+    LocateIntent:
+      action:
+        service: notify.notify
+        data_template:
+          message: The location of {{ User }} has been queried via Alexa.
+      speech:
+        type: plaintext
+        text: >
+          {%- for state in states.device_tracker -%}
+            {%- if state.name.lower() == User.lower() -%}
+              {{ state.name }} is at {{ state.state }}
+            {%- endif -%}
+          {%- else -%}
+            I am sorry, I do not know where {{ User }} is.
+          {%- endfor -%}
+      card:
+        type: simple
+        title: Where is {{ User }}
+        content: >
+          {%- for state in states.device_tracker -%}
+            {%- if state.name.lower() == User.lower() -%}
+              {{ state.name }} is at {{ state.state | replace("_", " ") }}
+            {%- endif -%}
+          {%- else -%}
+            I am sorry, I do not know where {{ User }} is.
+          {%- endfor -%}
+    ActivateSceneIntent:
+      action:
+        service: scene.turn_on
+        data_template:
+          entity_id: scene.{{ Scene | replace(" ", "_") }}
+      speech:
+        type: plaintext
+        text: !include alexa_confirm.yaml
+    RunScriptIntent:
+      action:
+        service: script.turn_on
+        data_template:
+          entity_id: script.{{ Script | replace(" ", "_") }}
+      speech:
+        type: plaintext
+        text: !include alexa_confirm.yaml
+    ChangeChannelIntent:
+      action:
+        service: script.turn_on
+        data_template:
+          entity_id: script.lounge_watch_{{ Channel | replace(" ", "_") }}
+      speech:
+        type: plaintext
+        text: !include alexa_confirm.yaml

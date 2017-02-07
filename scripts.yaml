@@ -1,0 +1,95 @@
+  lounge_volume_up:
+    alias: "Turn the Lounge Volume Up"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+  lounge_volume_down:
+    alias: "Turn the Lounge Volume Down"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+  lounge_watch_bbc_1:
+    alias: "Change channel to BBC One"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_0
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+  lounge_watch_bbc_2:
+    alias: "Change channel to BBC Two"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_0
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_2
+  lounge_watch_itv_1:
+    alias: "Change channel to ITV1"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_0
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_3
+  lounge_watch_channel_4:
+    alias: "Change channel to Channel 4"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_0
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_4
+  lounge_watch_5:
+    alias: "Change channel to Five"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_0
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_5
+  lounge_watch_nick_junior:
+    alias: "Change channel to Nick Jr"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.sky_6
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_1
+      - delay: 00:00:01
+      - service: switch.turn_on
+        entity_id: switch.sky_5
+
+
+
