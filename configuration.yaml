@@ -190,10 +190,10 @@ camera:
 #    verify_ssl: false
 #    valid_ssl: false
 
-switch: !include broadlink.yaml
+switch: !include_dir_merge_named switches
 group: !include_dir_merge_named groups
-zone: !include zones.yaml
-scene: !include_dir_merge_named scenes.yaml
-script: !include_dir_merge_named scripts.yaml
+zone: !include_dir_merge_named zones
+scene: !include_dir_merge_named scenes
+script: !include_dir_merge_named scripts
 automation: !include_dir_merge_named automations
 alexa: !include alexa.yaml
