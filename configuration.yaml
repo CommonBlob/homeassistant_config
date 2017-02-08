@@ -193,7 +193,7 @@ camera:
 switch: !include broadlink.yaml
 group: !include_dir_merge_named groups
 zone: !include zones.yaml
-scene: !include scenes.yaml
-script: !include scripts.yaml
-automation: !include automations.yaml
+scene: !include_dir_merge_named scenes.yaml
+script: !include_dir_merge_named scripts.yaml
+automation: !include_dir_merge_named automations
 alexa: !include alexa.yaml
