@@ -1,0 +1,19 @@
+  - platform: darksky
+    api_key: !secret darksky_api
+    update_interval: '00:10'
+    units: uk2
+    monitored_conditions:
+      - summary
+      - icon
+      - nearest_storm_distance
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - temperature
+      - apparent_temperature
+      - wind_speed
+      - wind_bearing
+      - humidity
+      - visibility
+      - hourly_summary
+      - daily_summary

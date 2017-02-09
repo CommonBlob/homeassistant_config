@@ -63,69 +63,6 @@ sun:
 #  username: !secret mqtt_username
 #  password: !secret mqtt_password
 
-# Weather Prediction
-sensor:
-  - platform: fastdotcom
-  - platform: steam_online
-    api_key: !secret steam_apikey
-    accounts: 
-      - !secret steam_account1
-      - !secret steam_account2
-  - platform: google_travel_time
-    name: Time to Work
-    api_key: !secret google_matrixapi
-    origin: device_tracker.cvh7n15c29000362
-    destination: zone.work
-    options:
-      mode: transit
-  - platform: google_travel_time
-    name: Time to Home
-    api_key: !secret google_matrixapi
-    origin: device_tracker.cvh7n15c29000362
-    destination: zone.home
-    options:
-      mode: transit
-  - platform: darksky
-    api_key: !secret darksky_api
-    update_interval: '00:10'
-    units: uk2
-    monitored_conditions:
-      - summary
-      - icon
-      - nearest_storm_distance
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - temperature
-      - apparent_temperature
-      - wind_speed
-      - wind_bearing
-      - humidity
-      - visibility
-      - hourly_summary
-      - daily_summary
-  - platform: systemmonitor
-    resources:
-      - type: disk_use_percent
-        arg: /home
-      - type: memory_free
-      - type: processor_use
-      - type: since_last_boot
-  - platform: pi_hole
-  - platform: xbox_live
-    api_key: !secret xbox_apikey
-    xuid:
-      - !secret xbox_uid1
-  - platform: synologydsm
-    host: !secret ip_synology
-    port: 5000
-    username: !secret synology_username
-    password: !secret synology_password
-    monitored_conditions:
-      - cpu_total_load
-      - memory_real_usage
-      - disk_smart_status
-      - volume_status
 # Text to speech
 tts:
   - platform: google
@@ -194,10 +131,11 @@ camera:
 #    verify_ssl: false
 #    valid_ssl: false
 
+sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_named switches
 group: !include_dir_merge_named groups
 zone: !include_dir_merge_list zones
 scene: !include_dir_merge_list scenes
 script: !include_dir_merge_named scripts
 automation: !include_dir_merge_list automations
-alexa: !include alexa.yaml
+alexa: !include alexa/alexa.yaml

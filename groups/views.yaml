@@ -1,0 +1,34 @@
+default_view_dev:
+  view: yes
+  entities:
+    - group.family_card
+    - group.media
+    - group.arrivehome
+    - group.climate
+    - group.study
+    - scene.going_to_bed
+    - automation.welcome_home_mike
+    - sensor.fastcom_download
+    - sensor.dark_sky_icon
+    - sensor.time_to_home
+    - sensor.time_to_work
+    - sun.sun
+media:
+  name: Media
+  view: yes
+  entities:
+    - switch.lounge_tv
+    - switch.lounge_xbox
+    - switch.lounge_amp
+    - switch.lounge_sky
+    - media_player.lg_tv_remote
+    - media_player.lounge_media_player
+    - media_player.study_media_player
+monitoring:
+  name: Monitoring
+  view: yes
+  entities:
+    - group.system_monitoring
+    - group.weather_card
+    - group.synology_system_monitoring
+

@@ -1,3 +1,17 @@
+  lounge_change_channel:
+    alias: 'Change a channel'
+    sequence:
+      - service: switch.turn_on
+        data_template:
+          entity_id: switch.sky_{{ num1 }}
+      - delay: 00:00:01
+      - service: switch.turn_on
+        data_template:
+          entity_id: switch.sky_{{ num2 }}
+      - delay: 00:00:01
+      - service: switch.turn_on
+        data_template:
+          entity_id: switch.sky_{{ num3 }}
   lounge_volume_up:
     alias: "Turn the Lounge Volume Up"
     sequence:
@@ -27,14 +41,11 @@
   lounge_watch_bbc_1:
     alias: "Change channel to BBC One"
     sequence:
-      - service: switch.turn_on
-        entity_id: switch.sky_1
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_0
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_1
+      - service: script.lounge_change_channel
+        data:
+          num1: '1'
+          num2: '0'
+          num3: '1"
   lounge_watch_bbc_2:
     alias: "Change channel to BBC Two"
     sequence:

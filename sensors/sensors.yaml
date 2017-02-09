@@ -1,0 +1,28 @@
+  - platform: fastdotcom
+  - platform: steam_online
+    api_key: !secret steam_apikey
+    accounts:
+      - !secret steam_account1
+      - !secret steam_account2
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+      - type: since_last_boot
+  - platform: pi_hole
+  - platform: xbox_live
+    api_key: !secret xbox_apikey
+    xuid:
+      - !secret xbox_uid1
+  - platform: synologydsm
+    host: !secret ip_synology
+    port: 5000
+    username: !secret synology_username
+    password: !secret synology_password
+    monitored_conditions:
+      - cpu_total_load
+      - memory_real_usage
+      - disk_smart_status
+      - volume_status

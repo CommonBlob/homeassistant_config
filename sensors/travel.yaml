@@ -1,0 +1,15 @@
+  - platform: google_travel_time
+    name: Time to Work
+    api_key: !secret google_matrixapi
+    origin: device_tracker.cvh7n15c29000362
+    destination: zone.work
+    options:
+      mode: transit
+  - platform: google_travel_time
+    name: Time to Home
+    api_key: !secret google_matrixapi
+    origin: device_tracker.cvh7n15c29000362
+    destination: zone.home
+    options:
+      mode: transit
+
