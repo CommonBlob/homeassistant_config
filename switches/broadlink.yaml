@@ -1,6 +1,6 @@
   platform: broadlink
   host: !secret ip_broadlink
-  mac: '34:EA:34:E4:73:EA'
+  mac: !secret mac_broadlink
   timeout: 15
   switches:
     kids_bedroom_lamp:
