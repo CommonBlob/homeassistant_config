@@ -32,13 +32,13 @@
   action:
     service: homeassistant.turn_off
     entity_id: light.outside
-- alias: Known person arrives
-  trigger:
-    platform: event
-    event_type: identify_face
-    event_data:
-      entity_id: image_processing.microsoftface_lobby
-      name: 'Mike Clark'
-  action:
-    service: homeassistant.turn_on
-    entity_id: light.study
+#- alias: Known person arrives
+#  trigger:
+#    platform: event
+#    event_type: identify_face
+#    event_data:
+#      entity_id: image_processing.microsoftface_lobby
+#      name: 'Mike Clark'
+#  action:
+#    service: homeassistant.turn_on
+#    entity_id: light.study

@@ -1,0 +1,14 @@
+family_view:
+  name: Family
+  view: yes
+  entities:
+    - group.family
+    - group.gaming
+family:
+  name: Family
+  view: no
+  entities:
+    - device_tracker.cvh7n15c29000362
+    - device_tracker.amy_phone
+    - device_tracker.ben_phone
+    - device_tracker.josh_phone

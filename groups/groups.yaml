@@ -1,129 +1,115 @@
-  default_view_dev:
-    view: yes
-    entities:
-      - group.family_card
-      - group.media
-      - group.arrivehome
-      - group.climate
-      - group.study
-      - scene.going_to_bed
-      - automation.welcome_home_mike
-      - sensor.fastcom_download
-      - sensor.dark_sky_icon
-      - sensor.time_to_home
-      - sensor.time_to_work
-      - sun.sun
-  family:
-    name: Family
-    view: yes
-    entities:
-      - group.family_card
-      - group.steamusers
-  family_card:
-    name: Family
-    view: no
-    entities:
-      - device_tracker.cvh7n15c29000362
-      - device_tracker.amy_phone
-      - device_tracker.ben_phone
-      - device_tracker.josh_phone
-  cameras:
-    name: Cameras
-    view: yes
-    entities:
-      - camera.lobby
-      - camera.backgarden
-      - camera.driveway
-  media:
-    name: Media
-    view: yes
-    entities:
-      - switch.lounge_tv
-      - switch.lounge_xbox
-      - switch.lounge_amp
-      - switch.lounge_sky
-      - media_player.lg_tv_remote
-      - media_player.lounge_media_player
-      - media_player.study_media_player
-  lounge:
-    name: Lounge
-    view: no
-    entities:
-      - light.lounge
-      - switch.lounge_lamp
-  study:
-    name: Study
-    control: hidden
-    view: no
-    entities:
-      - light.study
-  arrivehome:
-    name: Arrived Home
-    control: hidden
-    view: no
-    entities:
-      - light.lounge
-      - light.outside
-  steamusers:
-    name: Steam
-    view: no
-    entities:
-      - sensor.steam_76561197970599843
-      - sensor.steam_76561198257775864
-  climate:
-    name: Climate
-    view: no
-    entities:
-      - climate.thermostat
-  travel:
-    name: Travel
-    view: no
-    entities:
-      - sensor.time_to_work
-      - sensor.time_to_home
-  weather_card:
-    name: Weather
-    view: no
-    entities:
-      - sun.sun
-      - sensor.dark_sky_summary
-      - sensor.dark_sky_icon
-      - sensor.dark_sky_nearest_storm_distance
-      - sensor.dark_sky_precip
-      - sensor.dark_sky_precip_intensity
-      - sensor.dark_sky_precip_probability
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_apparent_temperature
-      - sensor.dark_sky_wind_speed
-      - sensor.dark_sky_wind_bearing
-      - sensor.dark_sky_humidity
-      - sensor.dark_sky_visibility
-      - sensor.dark_sky_hourly_summary
-      - sensor.dark_sky_daily_summary
-  monitoring:
-    name: Monitoring
-    view: yes
-    entities:
-      - group.system_monitoring
-      - group.weather_card
-      - group.synology_system_monitoring
-  system_monitoring:
-    name: System
-    view: no
-    entities:
-      - sensor.cpu_use
-      - sensor.disk_use_home
-      - sensor.fastcom_download
-      - sensor.pihole
-      - sensor.ram_free
-      - sensor.since_last_boot
-  synology_system_monitoring:
-    name: Synology
-    view: no
-    entities:
-      - sensor.cpu_load_total
-      - sensor.memory_usage_real
-      - sensor.status_smart_sda
-      - sensor.status_smart_sdb
-      - sensor.status_volume_1
-
+default_view_dev:
+  view: yes
+  entities:
+    - group.family_card
+    - group.media
+    - group.arrivehome
+    - group.climate
+    - group.study
+    - scene.going_to_bed
+    - automation.welcome_home_mike
+    - sensor.fastcom_download
+    - sensor.dark_sky_icon
+    - sensor.time_to_home
+    - sensor.time_to_work
+    - sun.sun
+cameras:
+  name: Cameras
+  view: yes
+  entities:
+    - camera.lobby
+    - camera.backgarden
+    - camera.driveway
+media:
+  name: Media
+  view: yes
+  entities:
+    - switch.lounge_tv
+    - switch.lounge_xbox
+    - switch.lounge_amp
+    - switch.lounge_sky
+    - media_player.lg_tv_remote
+    - media_player.lounge_media_player
+    - media_player.study_media_player
+lounge:
+  name: Lounge
+  view: no
+  entities:
+    - light.lounge
+    - switch.lounge_lamp
+study:
+  name: Study
+  control: hidden
+  view: no
+  entities:
+    - light.study
+arrivehome:
+  name: Arrived Home
+  control: hidden
+  view: no
+  entities:
+    - light.lounge
+    - light.outside
+gaming:
+  name: Gaming
+  view: no
+  entities:
+    - sensor.steam_76561197970599843
+    - sensor.steam_76561198257775864
+    - sensor.superdingleberg
+climate:
+  name: Climate
+  view: no
+  entities:
+    - climate.thermostat
+travel:
+  name: Travel
+  view: no
+  entities:
+    - sensor.time_to_work
+    - sensor.time_to_home
+weather_card:
+  name: Weather
+  view: no
+  entities:
+    - sun.sun
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_icon
+    - sensor.dark_sky_nearest_storm_distance
+    - sensor.dark_sky_precip
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_wind_bearing
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_visibility
+    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_daily_summary
+monitoring:
+  name: Monitoring
+  view: yes
+  entities:
+    - group.system_monitoring
+    - group.weather_card
+    - group.synology_system_monitoring
+system_monitoring:
+  name: System
+  view: no
+  entities:
+    - sensor.cpu_use
+    - sensor.disk_use_home
+    - sensor.fastcom_download
+    - sensor.pihole
+    - sensor.ram_free
+    - sensor.since_last_boot
+synology_system_monitoring:
+  name: Synology
+  view: no
+  entities:
+    - sensor.cpu_load_total
+    - sensor.memory_usage_real
+    - sensor.status_smart_sda
+    - sensor.status_smart_sdb
+    - sensor.status_volume_1
