@@ -43,9 +43,9 @@
     sequence:
       - service: script.lounge_change_channel
         data:
-          num1: '1'
-          num2: '0'
-          num3: '1"
+          num1: 1
+          num2: 0
+          num3: 1
   lounge_watch_bbc_2:
     alias: "Change channel to BBC Two"
     sequence:
