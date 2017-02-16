@@ -10,6 +10,7 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret location_tz
+  customize: !include customize.yaml
 
 # Enables the frontend
 frontend:
@@ -118,18 +119,18 @@ camera:
     username: !secret foscam_username
     password: !secret foscam_password
     name: Lobby
-  - platform: ffmpeg
-    input: !secret backgarden_camera_rtsp
-    name: Backgarden
-  - platform: ffmpeg
-    input: driveway_camera_rtsp
-    name: Driveway
-#  - platform: synology
-#    url: !secret synology_url
-#    username: !secret synology_username
-#    password: !secret synology_password
-#    verify_ssl: false
-#    valid_ssl: false
+#  - platform: ffmpeg
+#    input: !secret backgarden_camera_rtsp
+#    name: Backgarden
+#  - platform: ffmpeg
+#    input: driveway_camera_rtsp
+#    name: Driveway
+  - platform: synology
+    url: !secret synology_url
+    username: !secret synology_username
+    password: !secret synology_password
+    verify_ssl: false
+    valid_ssl: false
 
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_named switches

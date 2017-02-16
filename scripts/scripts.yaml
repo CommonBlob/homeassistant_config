@@ -3,15 +3,15 @@
     sequence:
       - service: switch.turn_on
         data_template:
-          entity_id: switch.sky_{{ num1 }}
+          entity_id: switch.sky_{{ channel[:1] }}
       - delay: 00:00:01
       - service: switch.turn_on
         data_template:
-          entity_id: switch.sky_{{ num2 }}
+          entity_id: switch.sky_{{ channel[1:2] }}
       - delay: 00:00:01
       - service: switch.turn_on
         data_template:
-          entity_id: switch.sky_{{ num3 }}
+          entity_id: switch.sky_{{ channel[2:] }}
   lounge_volume_up:
     alias: "Turn the Lounge Volume Up"
     sequence:
@@ -39,68 +39,63 @@
       - service: switch.turn_on
         entity_id: switch.lounge_volume_down
   lounge_watch_bbc_1:
-    alias: "Change channel to BBC One"
+    alias: "BBC One"
     sequence:
       - service: script.lounge_change_channel
         data:
-          num1: 1
-          num2: 0
-          num3: 1
+          channel: '101'
   lounge_watch_bbc_2:
-    alias: "Change channel to BBC Two"
+    alias: "BBC Two"
     sequence:
-      - service: switch.turn_on
-        entity_id: switch.sky_1
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_0
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_2
+      - service: script.lounge_change_channel
+        data:
+          channel: '102'
   lounge_watch_itv_1:
-    alias: "Change channel to ITV1"
+    alias: "ITV1"
     sequence:
-      - service: switch.turn_on
-        entity_id: switch.sky_1
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_0
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_3
+      - service: script.lounge_change_channel
+        data:
+          channel: '103'
   lounge_watch_channel_4:
-    alias: "Change channel to Channel 4"
+    alias: "Channel 4"
     sequence:
-      - service: switch.turn_on
-        entity_id: switch.sky_1
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_0
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_4
+      - service: script.lounge_change_channel
+        data:
+          channel: '104'
   lounge_watch_5:
-    alias: "Change channel to Five"
+    alias: "Five"
     sequence:
-      - service: switch.turn_on
-        entity_id: switch.sky_1
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_0
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_5
+      - service: script.lounge_change_channel
+        data:
+          channel: '105'
+  lounge_watch_sky_1:
+    alias: "Sky One"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '106'
+  lounge_watch_sky_living:
+    alias: "Sky Living"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '107'
+  lounge_watch_sky_atlantic:
+    alias: "Sky Atlantic"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '108'
+  lounge_watch_w:
+    alias: "W"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '109'
+
   lounge_watch_nick_junior:
-    alias: "Change channel to Nick Jr"
+    alias: "Nick Jr"
     sequence:
-      - service: switch.turn_on
-        entity_id: switch.sky_6
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_1
-      - delay: 00:00:01
-      - service: switch.turn_on
-        entity_id: switch.sky_5
-
-
-
+      - service: script.lounge_change_channel
+        data:
+          channel: '615'
