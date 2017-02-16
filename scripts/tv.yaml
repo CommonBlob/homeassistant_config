@@ -1,0 +1,27 @@
+  lounge_volume_up:
+    alias: "Turn the Lounge Volume Up"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_up
+  lounge_volume_down:
+    alias: "Turn the Lounge Volume Down"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+      - service: switch.turn_on
+        entity_id: switch.lounge_volume_down
+

@@ -1,0 +1,21 @@
+channel:
+  name: Channel
+  options:
+    - BBC 1
+    - BBC 2
+    - ITV 1
+    - Channel 4
+    - 5
+    - Sky 1
+    - Sky Living
+    - Sky Atlantic
+    - W
+    - Gold
+    - Dave
+    - Comedy Central
+    - Universal
+    - Syfy
+    - BBC 4
+    - Nick Junior
+  initial: BBC 1
+  icon: mdi:television-guide

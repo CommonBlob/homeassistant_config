@@ -30,7 +30,7 @@ media:
   name: Media
   view: yes
   entities:
-    - group.channels
+    - input_select.channel
     - switch.lounge_tv
     - switch.lounge_xbox
     - switch.lounge_amplifier

@@ -12,32 +12,6 @@
       - service: switch.turn_on
         data_template:
           entity_id: switch.sky_{{ channel[2:] }}
-  lounge_volume_up:
-    alias: "Turn the Lounge Volume Up"
-    sequence:
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_up
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_up
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_up
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_up
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_up
-  lounge_volume_down:
-    alias: "Turn the Lounge Volume Down"
-    sequence:
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_down
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_down
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_down
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_down
-      - service: switch.turn_on
-        entity_id: switch.lounge_volume_down
   lounge_watch_bbc_1:
     alias: "BBC One"
     sequence:
@@ -92,10 +66,46 @@
       - service: script.lounge_change_channel
         data:
           channel: '109'
-
+  lounge_watch_gold:
+    alias: "Gold"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '110'
+  lounge_watch_dave:
+    alias: "Dave"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '111'
+  lounge_watch_comedy_central:
+    alias: "Comedy Central"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '112'
+  lounge_watch_universal:
+    alias: "Universal"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '113'
+  lounge_watch_syfy:
+    alias: "Syfy"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '114'
+  lounge_watch_bbc_4:
+    alias: "BBC 4"
+    sequence:
+      - service: script.lounge_change_channel
+        data:
+          channel: '116'
   lounge_watch_nick_junior:
     alias: "Nick Jr"
     sequence:
       - service: script.lounge_change_channel
         data:
           channel: '615'
+

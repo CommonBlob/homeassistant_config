@@ -4,3 +4,5 @@
       hidden: true
     - entity_id: group.arrivehome
       hidden: true
+    - entity_id: input_select.channel
+      name: Channel

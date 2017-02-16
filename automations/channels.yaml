@@ -1,0 +1,9 @@
+- alias: 'Change Channel'
+  trigger:
+    - platform: state
+      entity_id: input_select.channel
+  action:
+    - service: script.turn_on
+      data_template:
+        entity_id: script.lounge_watch_{{ states("input_select.channel") | replace(" ", "_") }}
+ 
