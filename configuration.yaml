@@ -48,6 +48,9 @@ conversation:
 
 notify:
   - platform: html5
+  - name: SimplePush_Mike
+    platform: simplepush
+    device_key: !secret simplepush_key
 
 # Enables support for tracking state changes over time.
 history:
