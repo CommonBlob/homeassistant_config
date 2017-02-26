@@ -10,7 +10,17 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret location_tz
-  customize: !include customize.yaml
+  customize:
+    script.lounge_change_channel:
+      hidden: true
+    group.arrivehome:
+      hidden: true
+    input_select.channel:
+      name: Channel
+  customize_domain: {}
+  customize_glob:
+    switch.sky_*:
+      hidden: true
 
 # Enables the frontend
 frontend:

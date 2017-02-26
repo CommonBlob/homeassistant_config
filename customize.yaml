@@ -1,8 +1,0 @@
-    - entity_id: script.lounge_change_channel
-      hidden: true
-    - entity_id: switch.sky_*
-      hidden: true
-    - entity_id: group.arrivehome
-      hidden: true
-    - entity_id: input_select.channel
-      name: Channel
