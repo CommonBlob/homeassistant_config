@@ -24,6 +24,7 @@ lighting:
   entities:
     - group.lounge
     - group.study
+    - light.outside
     - switch.bedroom_lamp
     - switch.kids_bedroom_lamp
 media:

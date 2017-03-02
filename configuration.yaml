@@ -115,7 +115,7 @@ light:
   platform: limitlessled
   bridges:
     - host: !secret ip_limitless
-      version: 4
+      version: 3
       port: 8899
       groups:
       - number: 1
