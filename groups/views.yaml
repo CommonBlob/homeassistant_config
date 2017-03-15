@@ -7,11 +7,11 @@ default_view:
     - group.lounge
     - scene.going_to_bed
     - scene.hugo_going_to_sleep
-    - sensor.fastcom_download
-    - sensor.dark_sky_icon
+    - sensor.dark_sky_summary
     - group.travel
     - sun.sun
     - binary_sensor.study_motion_sensor
+    - group.links
 cameras:
   name: Cameras
   view: yes

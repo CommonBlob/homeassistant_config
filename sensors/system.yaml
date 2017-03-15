@@ -12,10 +12,10 @@
       - type: processor_use
       - type: since_last_boot
   - platform: pi_hole
-  - platform: xbox_live
-    api_key: !secret xbox_apikey
-    xuid:
-      - !secret xbox_uid1
+#  - platform: xbox_live
+#    api_key: !secret xbox_apikey
+#    xuid:
+#      - !secret xbox_uid1
   - platform: synologydsm
     host: !secret ip_synology
     port: 5000

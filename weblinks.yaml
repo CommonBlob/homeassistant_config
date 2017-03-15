@@ -1,0 +1,7 @@
+entities:
+  - name: Router
+    url: !secret url_router
+    icon: mdi:router-wireless
+  - name: Synology
+    url: !secret url_synology
+    icon: mdi:harddisk

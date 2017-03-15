@@ -41,7 +41,6 @@ weather_card:
   entities:
     - sun.sun
     - sensor.dark_sky_summary
-    - sensor.dark_sky_icon
     - sensor.dark_sky_nearest_storm_distance
     - sensor.dark_sky_precip
     - sensor.dark_sky_precip_intensity
@@ -87,3 +86,9 @@ tv_channels:
     - script.lounge_watch_sky_living
     - script.lounge_watch_w
     - script.lounge_watch_nick_junior
+links:
+  name: Links
+  view: no
+  entities:
+    - weblink.router
+    - weblink.synology

@@ -91,6 +91,10 @@ media_player:
   - platform: lg_netcast
     host: !secret ip_lg
     access_token: !secret lg_accesstoken
+  - platform: cast
+    host: !secret ip_chromecastlounge
+  - platform: cast
+    host: !secret ip_chromecaststudy
 
 ifttt:
   key: !secret ifttt_key
@@ -163,3 +167,4 @@ script: !include_dir_merge_named scripts
 automation: !include_dir_merge_list automations
 alexa: !include alexa/alexa.yaml
 input_select: !include inputs/input_select.yaml
+weblink: !include weblinks.yaml
