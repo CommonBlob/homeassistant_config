@@ -76,3 +76,22 @@
         entity_id: climate.thermostat
         temperature: 16
         operation_mode: Heat
+- alias: Turn on Study light when motion is detected
+  trigger:
+    platform: state
+    entity_id: binary_sensor.study_motion_sensor
+    to: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.study
+- alias: Turn off Study light when motion is not detected for 10 minutes
+  trigger:
+    platform: state
+    entity_id: binary_sensor.study_motion_sensor
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.study
+

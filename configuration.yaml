@@ -71,11 +71,12 @@ logbook:
 # Track the sun
 sun:
 
-#mqtt:
-#  broker: !secret mqtt_url
-#  port: 
-#  username: !secret mqtt_username
-#  password: !secret mqtt_password
+mqtt:
+  discovery: true
+  broker: !secret mqtt_url
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
 
 # Text to speech
 tts:
@@ -146,6 +147,12 @@ camera:
     password: !secret synology_password
     verify_ssl: false
     valid_ssl: false
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "homeassistant/binary_sensor/study/state"
+    name: "Study Motion Sensor"
+    device_class: motion
 
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_named switches

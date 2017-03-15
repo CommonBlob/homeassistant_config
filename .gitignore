@@ -4,6 +4,7 @@
 *.csr
 *.crt
 *.key
+*.json
 gitupdate.sh
 ip_bans.yaml
 www

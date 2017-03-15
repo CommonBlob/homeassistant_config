@@ -11,6 +11,7 @@ default_view:
     - sensor.dark_sky_icon
     - group.travel
     - sun.sun
+    - binary_sensor.study_motion_sensor
 cameras:
   name: Cameras
   view: yes
