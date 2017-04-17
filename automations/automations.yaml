@@ -1,7 +1,7 @@
 - alias: Welcome Home Mike
   trigger:
     platform: state
-    entity_id: group.mike_device
+    entity_id: device_tracker.cvh7n15c29000362
     from: 'not_home'
     to: 'home'
     for:
@@ -70,7 +70,7 @@
     - service: notify.SimplePush_Mike
       data:
         message: Everyone has left, so i have set the temperature to 16degrees
-        title: Someone arrived home
+        title: Someone left home
     - service: climate.set_temperature
       data:
         entity_id: climate.thermostat
@@ -82,6 +82,9 @@
     entity_id: binary_sensor.study_motion_sensor
     from: 'off'
     to: 'on'
+  condition:
+    condition: sun
+    after: sunset
   action:
     service: homeassistant.turn_on
     entity_id: light.study
@@ -93,7 +96,7 @@
     from: 'on'
     to: 'off'
     for:
-      minutes: 1
+      minutes: 5
   action:
     service: homeassistant.turn_off
     entity_id: light.study

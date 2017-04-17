@@ -106,9 +106,9 @@ device_tracker:
     password: !secret router_password
   - platform: gpslogger
 
-device_sun_light_trigger:
-  device_group: group.family
-  light_group: group.arrivehome
+#device_sun_light_trigger:
+#  device_group: group.family
+#  light_group: group.arrivehome
 
 netatmo:
   api_key: !secret netatmo_apikey
@@ -157,6 +157,8 @@ binary_sensor:
     state_topic: "homeassistant/binary_sensor/study/state"
     name: "Study Motion Sensor"
     device_class: motion
+  - platform: workday
+    country: UK
 
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_named switches
