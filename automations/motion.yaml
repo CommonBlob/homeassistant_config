@@ -14,9 +14,9 @@
 - alias: Turn off Study light when motion is not detected for 10 minutes
   trigger:
     platform: state
-    entity_id: binary_sensor.study_motion_sensor
-    from: 'on'
-    to: 'off'
+    entity_id: sensor.study_motion
+    from: 'motion detected'
+    to: 'standby'
     for:
       minutes: 5
   action:
