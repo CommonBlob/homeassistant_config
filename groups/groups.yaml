@@ -10,6 +10,7 @@ study:
   view: no
   entities:
     - light.study
+    - light.motion_test
 arrivehome:
   name: Arrived Home
   control: hidden

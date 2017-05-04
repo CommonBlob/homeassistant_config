@@ -1,3 +1,7 @@
+  - platform: mqtt
+    state_topic: "ha/sensornode1"
+    name: "Study Motion"
+    value_template: '{{ value_json.motion }}'
   - platform: fastdotcom
   - platform: steam_online
     api_key: !secret steam_apikey

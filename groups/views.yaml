@@ -10,7 +10,7 @@ default_view:
     - sensor.dark_sky_summary
     - group.travel
     - sun.sun
-    - binary_sensor.study_motion_sensor
+    - sensor.study_motion
     - group.links
 cameras:
   name: Cameras
@@ -42,6 +42,7 @@ media:
     - media_player.lg_tv_remote
     - media_player.lounge_media_player
     - media_player.study_media_player
+    - media_player.mpd
 monitoring:
   name: Monitoring
   view: yes

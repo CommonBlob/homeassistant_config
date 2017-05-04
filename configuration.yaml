@@ -100,7 +100,7 @@ ifttt:
   key: !secret ifttt_key
 
 device_tracker:
-  - platform: ddwrt
+  - platform: netgear
     host: !secret ip_router
     username: !secret router_username
     password: !secret router_password
@@ -117,22 +117,30 @@ netatmo:
   password: !secret netatmo_password
 
 light:
-  platform: limitlessled
-  bridges:
-    - host: !secret ip_limitless
-      version: 3
-      port: 8899
-      groups:
-      - number: 1
-        name: Lounge
-        type: rgbw
-      - number: 2
-        name: Study
-        type: rgbw
-      - number: 3
-        name: Outside
-        type: rgbw
-
+  - platform: limitlessled
+    bridges:
+      - host: !secret ip_limitless
+        version: 3
+        port: 8899
+        groups:
+        - number: 1
+          name: Lounge
+          type: rgbw
+        - number: 2
+          name: Study
+          type: rgbw
+        - number: 3
+          name: Outside
+          type: rgbw
+  - platform: mqtt_json
+    name: "Motion Test"
+    state_topic: "ha/sensornode1"
+    command_topic: "ha/sensornode1/set"
+    brightness: true
+    flash: true
+    rgb: true
+    optimistic: false
+    qos: 0
 camera:
   - platform: foscam
     ip: !secret ip_lobby
@@ -153,10 +161,6 @@ camera:
     valid_ssl: false
 
 binary_sensor:
-  - platform: mqtt
-    state_topic: "homeassistant/binary_sensor/study/state"
-    name: "Study Motion Sensor"
-    device_class: motion
   - platform: workday
     country: UK
 

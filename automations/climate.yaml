@@ -1,0 +1,40 @@
+- alias: Set Climate when Home
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '20:00:00'
+  action:
+    - service: notify.SimplePush_Mike
+      data:
+        message: Someone is home, so i have set the temperature to 19degrees
+        title: Someone arrived home
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.thermostat
+        temperature: 19
+        operation_mode: Heat
+- alias: Set Climate When Away
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'home'
+    to: 'not_home'
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '20:00:00'
+  action:
+    - service: notify.SimplePush_Mike
+      data:
+        message: Everyone has left, so i have set the temperature to 16degrees
+        title: Someone left home
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.thermostat
+        temperature: 16
+        operation_mode: Heat
