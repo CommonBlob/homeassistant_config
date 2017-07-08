@@ -11,6 +11,9 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret location_tz
   customize:
+#    binary_sensor.floorplan:
+#      custom_ui_state_card: floorplan
+#      config: !include floorplan/floorplan.yaml
     script.lounge_change_channel:
       hidden: true
     group.arrivehome:
@@ -25,6 +28,8 @@ homeassistant:
 # Enables the frontend
 frontend:
 
+config:
+
 http:
   # Uncomment this to add a password (recommended!)
   api_password: !secret http_password
@@ -35,18 +40,20 @@ http:
   ssl_certificate: !secret sslcert
   ssl_key: !secret sslkey
 
-#microsoft_face:
-#  api_key: !secret microsoft_face_apikey
-
 #image_processing:
-# - platform: microsoft_face_identify
-#   group: family
-#   source:
-#    - entity_id: camera.lobby_camera
+#  - platform: dlib_face_detect
+#    source:
+#      - entity_id: camera.lobby
 
 # Checks for available updates
 updater:
 
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan/floorplan.yaml
 ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 
@@ -64,6 +71,9 @@ notify:
 
 # Enables support for tracking state changes over time.
 history:
+
+recorder:
+  purge_days: 14
 
 # View all events in a logbook
 logbook:
@@ -116,6 +126,10 @@ netatmo:
   username: !secret netatmo_username
   password: !secret netatmo_password
 
+tradfri:
+  host: !secret tradfri_ip
+  api_key: !secret tradfri_apikey
+
 light:
   - platform: limitlessled
     bridges:
@@ -163,6 +177,9 @@ camera:
 binary_sensor:
   - platform: workday
     country: UK
+  - platform: mqtt
+    state_topic: dummy/floorplan/sensor
+    name: Floorplan
 
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_named switches
@@ -170,7 +187,7 @@ group: !include_dir_merge_named groups
 zone: !include_dir_merge_list zones
 scene: !include_dir_merge_list scenes
 script: !include_dir_merge_named scripts
-automation: !include_dir_merge_list automations
+automation: !include automations.yaml
 alexa: !include alexa/alexa.yaml
 input_select: !include inputs/input_select.yaml
 weblink: !include weblinks.yaml

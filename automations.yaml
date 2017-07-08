@@ -1,0 +1,139 @@
+- alias: Welcome Home Mike
+  trigger:
+    platform: state
+    entity_id: device_tracker.cvh7n15c29000362
+    from: 'not_home'
+    to: 'home'
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '20:00:00'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.lounge_media_player
+      data_template:
+        message: >
+         {{ [ "Welcome home Mike. I missed you so much. Bye", "Welcome back Mike. Have you had a good day?", "Is it that time already, welcome home Mike the creator!", "Ahh, i see Mike is back. Great to see you old chap.", "I came across a wooden stick. Oh, and hello Mike." ] | random }}
+    - service: notify.SimplePush_Mike
+      data:
+        message: Mike arrived home
+        title: Home
+- alias: Turn Outside Light Off
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: light.outside
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.outside
+- alias: Arriving Home When Dark
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: sun
+    after: sunset
+  action:
+    service: light.turn_on
+    entity_id: light.outside
+- alias: Turn lights on at Sunset
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+    service: light.turn_on
+    entity_id: group.living_room
+
+- alias: Set Climate when Home
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '20:00:00'
+  action:
+    - service: notify.SimplePush_Mike
+      data:
+        message: Someone is home, so i have set the temperature to 19degrees
+        title: Someone arrived home
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.thermostat
+        temperature: 19
+        operation_mode: Heat
+- alias: Set Climate When Away
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'home'
+    to: 'not_home'
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '20:00:00'
+  action:
+    - service: notify.SimplePush_Mike
+      data:
+        message: Everyone has left, so i have set the temperature to 16degrees
+        title: Someone left home
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.thermostat
+        temperature: 16
+        operation_mode: Heat
+
+- alias: Turn on Study light when motion is detected
+  trigger:
+    platform: state
+    entity_id: sensor.study_motion
+    from: 'standby'
+    to: 'motion detected'
+  condition:
+    condition: sun
+    after: sunset
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.study
+
+- alias: Turn off Study light when motion is not detected for 10 minutes
+  trigger:
+    platform: state
+    entity_id: sensor.study_motion
+    from: 'motion detected'
+    to: 'standby'
+    for:
+      minutes: 5
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.study
+
+
+- alias: 'Change Channel'
+  trigger:
+    - platform: state
+      entity_id: input_select.channel
+  action:
+    - service: script.turn_on
+      data_template:
+        entity_id: script.lounge_watch_{{ states("input_select.channel") | replace(" ", "_") }}
+

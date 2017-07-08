@@ -10,8 +10,8 @@ default_view:
     - sensor.dark_sky_summary
     - group.travel
     - sun.sun
-    - sensor.study_motion
     - group.links
+    - group.floorplan
 cameras:
   name: Cameras
   view: yes
@@ -26,6 +26,8 @@ lighting:
     - group.lounge
     - group.study
     - light.outside
+    - light.lobby
+    - light.lobby_2
     - switch.bedroom_lamp
     - switch.kids_bedroom_lamp
 media:

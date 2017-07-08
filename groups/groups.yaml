@@ -11,6 +11,10 @@ study:
   entities:
     - light.study
     - light.motion_test
+    - sensor.study_temperature
+    - sensor.study_humidity
+    - sensor.study_ldr
+    - sensor.study_motion
 arrivehome:
   name: Arrived Home
   control: hidden
