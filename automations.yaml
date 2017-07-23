@@ -46,17 +46,19 @@
     from: 'not_home'
     to: 'home'
   condition:
-    condition: sun
-    after: sunset
+    condition: state
+    entity_id: sun.sun
+    state: 'below horizon'
   action:
     service: light.turn_on
     entity_id: light.outside
 - id: turnlightson
   alias: Turn lights on at Sunset
   trigger:
-    platform: sun
-    event: sunset
-    offset: '-01:00:00'
+    platform: state
+    entity_id: sun.sun
+    from: 'above_horizon'
+    to: 'below_horizon'
   condition:
     condition: state
     entity_id: group.family
