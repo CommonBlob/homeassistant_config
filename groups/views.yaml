@@ -1,17 +1,18 @@
 default_view:
   view: yes
   entities:
-    - group.family_card
+    - group.family
     - group.climate
     - group.study
     - group.lounge
+    - group.bedroom
+    - group.lobby
     - scene.going_to_bed
     - scene.hugo_going_to_sleep
     - sensor.dark_sky_summary
     - group.travel
     - sun.sun
     - group.links
-    - group.floorplan
 cameras:
   name: Cameras
   view: yes
@@ -27,7 +28,8 @@ lighting:
     - group.study
     - light.outside
     - light.lobby
-    - light.lobby_2
+    - light.bedroom
+    - light.stairs
     - switch.bedroom_lamp
     - switch.kids_bedroom_lamp
 media:
@@ -52,3 +54,6 @@ monitoring:
     - group.system_monitoring
     - group.weather_card
     - group.synology_system_monitoring
+automations:
+  name: Automations
+  view: yes

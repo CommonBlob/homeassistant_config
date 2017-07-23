@@ -137,12 +137,6 @@ light:
         version: 3
         port: 8899
         groups:
-        - number: 1
-          name: Lounge
-          type: rgbw
-        - number: 2
-          name: Study
-          type: rgbw
         - number: 3
           name: Outside
           type: rgbw

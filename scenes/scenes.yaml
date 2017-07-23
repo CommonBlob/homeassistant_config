@@ -3,6 +3,8 @@
     light.lounge: off
     light.study: off
     light.outside: off
+    light.lobby: off
+    light.stairs: off
     switch.lounge_xbox: off
     switch.lounge_lamp: off
 - name: Hugo going to sleep

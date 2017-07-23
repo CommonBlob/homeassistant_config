@@ -15,6 +15,21 @@ study:
     - sensor.study_humidity
     - sensor.study_ldr
     - sensor.study_motion
+bedroom:
+  name: Bedroom
+  control: hidden
+  view: no
+  entities:
+    - light.bedroom
+    - switch.bedroom_lamp
+    - light.stairs
+lobby:
+  name: Lobby
+  control: hidden
+  view: no
+  entities:
+    - light.lobby
+    - light.outside
 arrivehome:
   name: Arrived Home
   control: hidden

@@ -1,4 +1,5 @@
-- alias: Welcome Home Mike
+- id: WelcomeHomeMike
+  alias: Welcome Home Mike
   trigger:
     platform: state
     entity_id: device_tracker.cvh7n15c29000362
@@ -22,7 +23,8 @@
       data:
         message: Mike arrived home
         title: Home
-- alias: Turn Outside Light Off
+- id: TurnOutsideLightOff
+  alias: Turn Outside Light Off
   hide_entity: true
   trigger:
     platform: state
@@ -36,7 +38,8 @@
   action:
     service: homeassistant.turn_off
     entity_id: light.outside
-- alias: Arriving Home When Dark
+- id: arrivehomewhendark
+  alias: Arriving Home When Dark
   trigger:
     platform: state
     entity_id: group.family
@@ -48,7 +51,8 @@
   action:
     service: light.turn_on
     entity_id: light.outside
-- alias: Turn lights on at Sunset
+- id: turnlightson
+  alias: Turn lights on at Sunset
   trigger:
     platform: sun
     event: sunset
@@ -59,9 +63,10 @@
     state: 'home'
   action:
     service: light.turn_on
-    entity_id: group.living_room
+    entity_id: light.lounge
 
-- alias: Set Climate when Home
+- id: climatewhenhome
+  alias: Set Climate when Home
   trigger:
     platform: state
     entity_id: group.family
@@ -81,7 +86,8 @@
         entity_id: climate.thermostat
         temperature: 19
         operation_mode: Heat
-- alias: Set Climate When Away
+- id: climatewhenaway
+  alias: Set Climate When Away
   trigger:
     platform: state
     entity_id: group.family
@@ -102,7 +108,8 @@
         temperature: 16
         operation_mode: Heat
 
-- alias: Turn on Study light when motion is detected
+- id: studylightmotiondetect
+  alias: Turn on Study light when motion is detected
   trigger:
     platform: state
     entity_id: sensor.study_motion
@@ -115,7 +122,8 @@
     service: homeassistant.turn_on
     entity_id: light.study
 
-- alias: Turn off Study light when motion is not detected for 10 minutes
+- id: studylightoff
+  alias: Turn off Study light when motion is not detected for 10 minutes
   trigger:
     platform: state
     entity_id: sensor.study_motion
@@ -128,7 +136,8 @@
     entity_id: light.study
 
 
-- alias: 'Change Channel'
+- id: changechannel
+  alias: 'Change Channel'
   trigger:
     - platform: state
       entity_id: input_select.channel
@@ -136,4 +145,3 @@
     - service: script.turn_on
       data_template:
         entity_id: script.lounge_watch_{{ states("input_select.channel") | replace(" ", "_") }}
-
