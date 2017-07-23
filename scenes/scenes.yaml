@@ -12,3 +12,11 @@
     light.lounge:
       state: on
       brightness: 2
+- name: Holiday
+  entities:
+    light.study:
+      state: on
+      brightness: 4
+    light.lounge:
+      state: on
+      brightness: 4

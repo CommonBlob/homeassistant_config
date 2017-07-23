@@ -9,6 +9,7 @@ default_view:
     - group.lobby
     - scene.going_to_bed
     - scene.hugo_going_to_sleep
+    - scene.holiday
     - sensor.dark_sky_summary
     - group.travel
     - sun.sun
@@ -57,3 +58,5 @@ monitoring:
 automations:
   name: Automations
   view: yes
+  entities:
+    - input_boolean.holiday_mode

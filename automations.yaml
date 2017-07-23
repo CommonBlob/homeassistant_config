@@ -135,6 +135,44 @@
     service: homeassistant.turn_off
     entity_id: light.study
 
+- id: holidaymode
+  alias: Holiday Scene
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      from: 'above_horizon'
+      to: 'below_horizon'
+  condition:
+    - condition: state
+      entity_id: input_boolean.holiday_mode
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.holiday
+- id: holidaymodelightsoff
+  alias: Holiday Scene Off
+  trigger:
+    - platform: time
+      at: '00:05'
+  condition:
+    - condition: state
+      entity_id: input_boolean.holiday_mode
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.study, light.lounge, light.lobby
+- id: holidaymodelightsofflater
+  alias: Holiday Scene Off
+  trigger:
+    - platform: time
+      at: '00:35'
+  condition:
+    - condition: state
+      entity_id: input_boolean.holiday_mode
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.stairs
 
 - id: changechannel
   alias: 'Change Channel'
