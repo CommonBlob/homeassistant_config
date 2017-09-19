@@ -1,0 +1,31 @@
+  update_kodi_library:
+    alias: Update Kodi Library
+    sequence:
+      - alias: Call Kodi Update
+        service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi
+          method: VideoLibrary.Scan
+  watch_a_movie:
+    alias: Watch a Movie
+    sequence:
+      - alias: Change Amp Input
+        service: switch.turn_on
+        data_template:
+          entity_id: switch.lounge_amp_hdmi2
+      - alias: Change TV Channel
+        service: switch.turn_on
+        data_template:
+          entity_id: switch.tv_hdmi_1
+  watch_the_tv:
+    alias: Watch the TV
+    sequence:
+      - alias: Change Amp Input
+        service: switch.turn_on
+        data_template:
+          entity_id: switch.lounge_amp_xb_audio
+      - alias: Change TV Channel
+        service: switch.turn_on
+        data_template:
+          entity_id: switch.tv_hdmi_3
+

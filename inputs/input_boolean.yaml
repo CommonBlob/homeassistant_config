@@ -1,3 +1,6 @@
 holiday_mode:
   name: Holiday Mode
   icon: mdi:airplane 
+houseviewing_mode:
+  name: House Viewing
+  icon: mdi:home-variant

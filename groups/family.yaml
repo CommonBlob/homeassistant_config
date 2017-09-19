@@ -8,7 +8,7 @@ family:
   name: Family
   view: no
   entities:
-    - device_tracker.mike_phone
+    - device_tracker.13d3cd6a
     - device_tracker.amy_phone
     - device_tracker.ben_phone
     - device_tracker.josh_phone

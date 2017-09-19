@@ -11,11 +11,9 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret location_tz
   customize:
-#    binary_sensor.floorplan:
-#      custom_ui_state_card: floorplan
-#      config: !include floorplan/floorplan.yaml
     script.lounge_change_channel:
       hidden: true
+      emulated_hue: false
     group.arrivehome:
       hidden: true
     input_select.channel:
@@ -24,6 +22,7 @@ homeassistant:
   customize_glob:
     switch.sky_*:
       hidden: true
+      emulated_hue: false
 
 # Enables the frontend
 frontend:
@@ -57,6 +56,8 @@ panel_custom:
 ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 
+shopping_list:
+
 # Discover some devices automatically
 discovery:
 
@@ -64,7 +65,6 @@ discovery:
 conversation:
 
 notify:
-  - platform: html5
   - name: SimplePush_Mike
     platform: simplepush
     device_key: !secret simplepush_key
@@ -93,18 +93,23 @@ tts:
   - platform: google
 
 emulated_hue:
+  host_ip: !secret ip_ha
   exposed_domains:
     - light
     - switch
-
+    - script
 media_player:
   - platform: lg_netcast
     host: !secret ip_lg
     access_token: !secret lg_accesstoken
-  - platform: cast
-    host: !secret ip_chromecastlounge
-  - platform: cast
-    host: !secret ip_chromecaststudy
+#  - platform: cast
+#    host: !secret ip_chromecastlounge
+#  - platform: cast
+#    host: !secret ip_chromecaststudy
+  - platform: kodi
+    host: !secret ip_kodi
+    username: !secret kodi_username
+    password: !secret kodi_password
 
 ifttt:
   key: !secret ifttt_key
@@ -120,11 +125,15 @@ device_tracker:
 #  device_group: group.family
 #  light_group: group.arrivehome
 
+climate:
+  platform: netatmo
+
 netatmo:
   api_key: !secret netatmo_apikey
   secret_key: !secret netatmo_secret
   username: !secret netatmo_username
   password: !secret netatmo_password
+  discovery: false
 
 tradfri:
   host: !secret tradfri_ip
@@ -155,12 +164,6 @@ camera:
     username: !secret foscam_username
     password: !secret foscam_password
     name: Lobby
-#  - platform: ffmpeg
-#    input: !secret backgarden_camera_rtsp
-#    name: Backgarden
-#  - platform: ffmpeg
-#    input: driveway_camera_rtsp
-#    name: Driveway
   - platform: synology
     url: !secret synology_url
     username: !secret synology_username

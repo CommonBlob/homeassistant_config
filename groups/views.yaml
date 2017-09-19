@@ -1,4 +1,4 @@
-default_view:
+default_views:
   view: yes
   entities:
     - group.family
@@ -9,6 +9,7 @@ default_view:
     - group.lobby
     - scene.going_to_bed
     - scene.hugo_going_to_sleep
+    - scene.houseviewing
     - sensor.dark_sky_summary
     - group.travel
     - sun.sun
@@ -47,6 +48,10 @@ media:
     - media_player.lounge_media_player
     - media_player.study_media_player
     - media_player.mpd
+    - media_player.kodi
+    - script.update_kodi_library
+    - script.watch_a_movie
+    - script.watch_the_tv
 monitoring:
   name: Monitoring
   view: yes

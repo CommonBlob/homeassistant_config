@@ -23,3 +23,17 @@
     light.stairs:
       state: on
       brightness: 2
+- name: House Viewing
+  entities:
+    light.study:
+      state: on
+      brightness: 10
+    light.lounge:
+      state: on
+      brightness: 10
+    light.stairs:
+      state: on
+      brightness: 10
+    light.bedroom:
+      state: on
+      brightness: 10
